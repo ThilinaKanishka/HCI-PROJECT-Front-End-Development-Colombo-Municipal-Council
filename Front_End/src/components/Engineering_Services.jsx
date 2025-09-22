@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 function Engineering_Services() {
   const [isVisible, setIsVisible] = useState(false);
@@ -12,7 +14,7 @@ function Engineering_Services() {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-blue-50 p-4 md:p-8">
       {/* Main Content */}
       <div className="max-w-7xl mx-auto">
-        {/* Header Section */}
+        {<Header />}
         <div
           className={`transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
@@ -241,6 +243,7 @@ function Engineering_Services() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
