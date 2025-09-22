@@ -43,12 +43,16 @@ function Header() {
               <span className="text-2xl">🏛️</span>
             </div>
             <div>
-              <h1 className="text-sm font-semibold text-white bg-black/20 px-2 py-1 rounded">
+              {/* Animated Website Name */}
+              <div className="text-lg font-mono font-bold relative overflow-hidden">
+                <div className="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400 bg-clip-text text-transparent animate-typing">
+                  import React from "react"
+                </div>
+                <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-yellow-400 to-transparent animate-cursor"></div>
+              </div>
+              <h1 className="text-sm font-semibold text-white bg-black/20 px-2 py-1 rounded mt-1">
                 Colombo Municipal Council
               </h1>
-              <div className="text-xs font-mono font-bold bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400 bg-clip-text text-transparent animate-pulse">
-                import React from "react"
-              </div>
             </div>
           </div>
 
