@@ -241,26 +241,6 @@ function Engineering_Services() {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="mt-12 py-6 text-center text-gray-600 text-sm">
-        <p>Copyright © 2024 Engineering Services. All rights reserved.</p>
-        <div className="mt-2 space-x-4">
-          <a
-            href="#"
-            className="hover:text-blue-700 transition-colors duration-300"
-          >
-            Terms & Conditions
-          </a>
-          <span>|</span>
-          <a
-            href="#"
-            className="hover:text-blue-700 transition-colors duration-300"
-          >
-            Privacy Policy
-          </a>
-        </div>
-      </footer>
     </div>
   );
 }
