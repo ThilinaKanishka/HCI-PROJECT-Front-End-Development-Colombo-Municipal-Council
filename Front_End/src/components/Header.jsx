@@ -23,124 +23,170 @@ function Header() {
       icon: "⚙️",
     },
     { path: "/Social_Services", label: "Social Services", icon: "👥" },
+    { path: "#", label: "Log Out", icon: "🚪" },
   ];
 
-  const isActive = (path) => location.pathname === path;
+  const websiteName = "Colombo Municipal Council";
 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
-          : "bg-gradient-to-r from-blue-600 via-green-500 to-teal-600 py-4"
+          ? "bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 shadow-2xl py-2"
+          : "bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 shadow-lg py-4"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
           {/* Logo and Website Name */}
           <div className="flex items-center space-x-3">
-            <div className="bg-white/20 p-2 rounded-full backdrop-blur-sm">
+            <div className="bg-white rounded-full p-2 shadow-lg animate-bounce">
               <span className="text-2xl">🏛️</span>
             </div>
-            <div>
-              {/* Animated Website Name */}
-              <div className="text-lg font-mono font-bold relative overflow-hidden">
-                <div className="bg-gradient-to-r from-yellow-400 via-red-400 to-pink-400 bg-clip-text text-transparent animate-typing">
-                  import React from "react"
-                </div>
-                <div className="absolute top-0 right-0 w-0.5 h-full bg-gradient-to-b from-transparent via-yellow-400 to-transparent animate-cursor"></div>
-              </div>
-              <h1 className="text-sm font-semibold text-white bg-black/20 px-2 py-1 rounded mt-1">
-                Colombo Municipal Council
+            <div className="flex flex-col">
+              <h1 className="text-white font-bold text-lg md:text-xl lg:text-2xl font-serif">
+                {websiteName.split("").map((letter, index) => (
+                  <span
+                    key={index}
+                    className="inline-block animate-rubberBand"
+                    style={{
+                      animationDelay: `${index * 0.1}s`,
+                      animationIterationCount: 1,
+                    }}
+                  >
+                    {letter === " " ? "\u00A0" : letter}
+                  </span>
+                ))}
               </h1>
+              <div className="text-cyan-300 text-xs md:text-sm font-mono animate-pulse"></div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
-            {navItems.map((item) => (
+            {navItems.map((item, index) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`flex items-center space-x-2 px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 ${
-                  isActive(item.path)
-                    ? "bg-white/20 text-white backdrop-blur-sm shadow-lg"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
+                className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 ${
+                  location.pathname === item.path
+                    ? "bg-white text-blue-600 shadow-lg"
+                    : "text-white hover:bg-blue-700 hover:bg-opacity-50"
+                } ${
+                  index === navItems.length - 1
+                    ? "bg-red-500 hover:bg-red-600"
+                    : ""
                 }`}
               >
                 <span className="text-lg">{item.icon}</span>
-                <span className="font-medium">{item.label}</span>
+                <span className="font-semibold">{item.label}</span>
               </Link>
             ))}
-
-            {/* Log Out Button */}
-            <button className="flex items-center space-x-2 ml-4 px-4 py-2 bg-red-500/20 text-white rounded-full hover:bg-red-600/30 transition-all duration-300 transform hover:scale-105 border border-red-400/30">
-              <span className="text-lg">🚪</span>
-              <span className="font-medium">Log Out</span>
-            </button>
           </nav>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2 rounded-lg bg-white/20 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden bg-white bg-opacity-20 p-2 rounded-lg text-white hover:bg-opacity-30 transition-all"
           >
-            <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-              <span
-                className={`block h-0.5 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? "rotate-45 translate-y-1.5" : ""
-                }`}
-              ></span>
-              <span
-                className={`block h-0.5 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? "opacity-0" : "opacity-100"
-                }`}
-              ></span>
-              <span
-                className={`block h-0.5 bg-white transition-all duration-300 ${
-                  isMobileMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
-                }`}
-              ></span>
-            </div>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isMobileMenuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
           </button>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className={`md:hidden transition-all duration-300 overflow-hidden ${
-            isMobileMenuOpen ? "max-h-96 opacity-100 mt-4" : "max-h-0 opacity-0"
-          }`}
-        >
-          <div className="bg-white/10 backdrop-blur-md rounded-lg p-4 space-y-2">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
-                  isActive(item.path)
-                    ? "bg-white/20 text-white"
-                    : "text-white/90 hover:text-white hover:bg-white/10"
-                }`}
-              >
-                <span className="text-xl">{item.icon}</span>
-                <span className="font-medium">{item.label}</span>
-              </Link>
-            ))}
-            <button className="flex items-center space-x-3 w-full px-4 py-3 bg-red-500/20 text-white rounded-lg hover:bg-red-600/30 transition-all duration-300 border border-red-400/30">
-              <span className="text-xl">🚪</span>
-              <span className="font-medium">Log Out</span>
-            </button>
+        {/* Mobile Navigation */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 bg-blue-800 bg-opacity-90 rounded-lg p-4 animate-slideDown">
+            <div className="flex flex-col space-y-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                    location.pathname === item.path
+                      ? "bg-white text-blue-600 shadow-lg"
+                      : "text-white hover:bg-blue-700"
+                  } ${
+                    item.label === "Log Out"
+                      ? "bg-red-500 hover:bg-red-600"
+                      : ""
+                  }`}
+                >
+                  <span className="text-xl">{item.icon}</span>
+                  <span className="font-semibold">{item.label}</span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full opacity-20 animate-bounce"></div>
-        <div className="absolute -top-8 -right-8 w-12 h-12 bg-green-400 rounded-full opacity-30 animate-pulse"></div>
-        <div className="absolute -bottom-6 left-1/4 w-6 h-6 bg-blue-400 rounded-full opacity-25 animate-ping"></div>
-      </div>
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes rubberBand {
+          0% {
+            transform: scale3d(1, 1, 1);
+          }
+          30% {
+            transform: scale3d(1.25, 0.75, 1);
+          }
+          40% {
+            transform: scale3d(0.75, 1.25, 1);
+          }
+          50% {
+            transform: scale3d(1.15, 0.85, 1);
+          }
+          65% {
+            transform: scale3d(0.95, 1.05, 1);
+          }
+          75% {
+            transform: scale3d(1.05, 0.95, 1);
+          }
+          100% {
+            transform: scale3d(1, 1, 1);
+          }
+        }
+
+        @keyframes slideDown {
+          0% {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-rubberBand {
+          animation: rubberBand 0.8s ease-in-out;
+        }
+
+        .animate-slideDown {
+          animation: slideDown 0.3s ease-out;
+        }
+      `}</style>
     </header>
   );
 }
