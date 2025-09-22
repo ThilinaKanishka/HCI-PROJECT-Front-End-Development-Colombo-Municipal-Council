@@ -32,23 +32,23 @@ function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 shadow-2xl py-2"
-          : "bg-gradient-to-r from-blue-600 via-blue-500 to-blue-600 shadow-lg py-4"
+          ? "bg-gradient-to-r from-emerald-900 via-green-800 to-emerald-900 shadow-2xl py-2"
+          : "bg-gradient-to-r from-emerald-600 via-green-500 to-emerald-600 shadow-lg py-4"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo and Website Name */}
           <div className="flex items-center space-x-3">
-            <div className="bg-white rounded-full p-2 shadow-lg animate-bounce">
-              <span className="text-2xl">🏛️</span>
+            <div className="bg-white rounded-full p-2 shadow-lg animate-bounce hover:animate-spin transition-all duration-300">
+              <span className="text-2xl">🌿</span>
             </div>
             <div className="flex flex-col">
               <h1 className="text-white font-bold text-lg md:text-xl lg:text-2xl font-serif">
                 {websiteName.split("").map((letter, index) => (
                   <span
                     key={index}
-                    className="inline-block animate-rubberBand"
+                    className="inline-block animate-rubberBand hover:animate-pulse"
                     style={{
                       animationDelay: `${index * 0.1}s`,
                       animationIterationCount: 1,
@@ -58,7 +58,7 @@ function Header() {
                   </span>
                 ))}
               </h1>
-              <div className="text-cyan-300 text-xs md:text-sm font-mono animate-pulse"></div>
+              <div className="text-emerald-200 text-xs md:text-sm font-mono animate-pulse hover:animate-bounce transition-all"></div>
             </div>
           </div>
 
@@ -70,15 +70,17 @@ function Header() {
                 to={item.path}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 ${
                   location.pathname === item.path
-                    ? "bg-white text-blue-600 shadow-lg"
-                    : "text-white hover:bg-blue-700 hover:bg-opacity-50"
+                    ? "bg-white text-emerald-600 shadow-lg font-bold"
+                    : "text-white hover:bg-emerald-700 hover:bg-opacity-50 border border-transparent hover:border-emerald-300"
                 } ${
                   index === navItems.length - 1
-                    ? "bg-red-500 hover:bg-red-600"
+                    ? "bg-amber-600 hover:bg-amber-700 border-amber-400"
                     : ""
                 }`}
               >
-                <span className="text-lg">{item.icon}</span>
+                <span className="text-lg transition-transform hover:scale-125">
+                  {item.icon}
+                </span>
                 <span className="font-semibold">{item.label}</span>
               </Link>
             ))}
@@ -87,7 +89,7 @@ function Header() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden bg-white bg-opacity-20 p-2 rounded-lg text-white hover:bg-opacity-30 transition-all"
+            className="md:hidden bg-white bg-opacity-20 p-2 rounded-lg text-white hover:bg-opacity-30 transition-all transform hover:scale-110"
           >
             <svg
               className="w-6 h-6"
@@ -116,24 +118,24 @@ function Header() {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 bg-blue-800 bg-opacity-90 rounded-lg p-4 animate-slideDown">
+          <div className="md:hidden mt-4 bg-emerald-800 bg-opacity-95 rounded-lg p-4 animate-slideDown border border-emerald-400">
             <div className="flex flex-col space-y-3">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 ${
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg transition-all duration-300 transform hover:scale-102 ${
                     location.pathname === item.path
-                      ? "bg-white text-blue-600 shadow-lg"
-                      : "text-white hover:bg-blue-700"
+                      ? "bg-white text-emerald-600 shadow-lg font-bold"
+                      : "text-white hover:bg-emerald-700 border border-transparent hover:border-emerald-300"
                   } ${
                     item.label === "Log Out"
-                      ? "bg-red-500 hover:bg-red-600"
+                      ? "bg-amber-600 hover:bg-amber-700 border-amber-400"
                       : ""
                   }`}
                 >
-                  <span className="text-xl">{item.icon}</span>
+                  <span className="text-xl animate-pulse">{item.icon}</span>
                   <span className="font-semibold">{item.label}</span>
                 </Link>
               ))}
@@ -179,12 +181,26 @@ function Header() {
           }
         }
 
+        @keyframes gentlePulse {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.02);
+          }
+        }
+
         .animate-rubberBand {
           animation: rubberBand 0.8s ease-in-out;
         }
 
         .animate-slideDown {
           animation: slideDown 0.3s ease-out;
+        }
+
+        .hover\\:scale-102:hover {
+          transform: scale(1.02);
         }
       `}</style>
     </header>
