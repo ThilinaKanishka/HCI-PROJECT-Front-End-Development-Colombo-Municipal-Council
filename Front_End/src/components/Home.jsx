@@ -48,7 +48,7 @@ function Home() {
     },
     {
       image:
-        "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
+        "https://srilankamirror.com/wp-content/uploads/2025/05/AKD_1200x675px_19_05_25-1000x600.jpg",
       title: "Community Welfare Services",
       subtitle: "Empowering Citizens, Enriching Lives",
       icon: "👥",
