@@ -18,7 +18,6 @@ function Login() {
       [name]: value,
     }));
 
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
@@ -48,32 +47,52 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (!validateForm()) return;
 
     setIsLoading(true);
-
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
-
     setIsLoading(false);
-    // Handle login logic here
     console.log("Login successful", formData);
   };
 
   return (
     <>
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
-        {/* Side Decoration Elements */}
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        {/* Animated Background Elements */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute left-10 top-1/4 w-32 h-32 bg-emerald-200 rounded-full opacity-20 animate-float"></div>
-          <div className="absolute right-20 top-1/3 w-24 h-24 bg-green-200 rounded-full opacity-20 animate-float delay-1000"></div>
-          <div className="absolute left-1/4 bottom-1/4 w-28 h-28 bg-teal-200 rounded-full opacity-20 animate-float delay-500"></div>
-          <div className="absolute right-32 bottom-1/3 w-20 h-20 bg-emerald-200 rounded-full opacity-20 animate-float delay-1500"></div>
+          {/* Floating Shapes */}
+          <div className="absolute left-10 top-1/4 w-32 h-32 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full opacity-20 animate-float-slow"></div>
+          <div className="absolute right-20 top-1/3 w-24 h-24 bg-gradient-to-r from-green-300 to-teal-300 rounded-full opacity-25 animate-float-medium"></div>
+          <div className="absolute left-1/4 bottom-1/4 w-28 h-28 bg-gradient-to-r from-teal-400 to-cyan-400 rounded-full opacity-20 animate-float-slow delay-1000"></div>
+          <div className="absolute right-32 bottom-1/3 w-20 h-20 bg-gradient-to-r from-emerald-300 to-green-300 rounded-full opacity-25 animate-float-medium delay-500"></div>
+
+          {/* Animated Grid */}
+          <div className="absolute inset-0 opacity-[0.03]">
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+          </div>
+
+          {/* Floating Particles */}
+          <div className="absolute inset-0">
+            {[...Array(15)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-emerald-400 rounded-full opacity-30 animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 2}s`,
+                  animationDuration: `${3 + Math.random() * 2}s`,
+                }}
+              ></div>
+            ))}
+          </div>
+
+          {/* Animated Waves */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-emerald-200/20 to-transparent opacity-40 animate-wave"></div>
         </div>
 
         {/* Logo Section */}
-        <div className="text-center mb-8 animate-fadeIn">
+        <div className="text-center mb-8 animate-fadeIn relative z-10">
           <Link to="/" className="inline-block group">
             <div className="flex items-center justify-center space-x-3 mb-4">
               <div className="bg-gradient-to-r from-emerald-500 to-green-500 p-3 rounded-xl transform group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -89,13 +108,18 @@ function Login() {
           </Link>
         </div>
 
-        {/* Wide Login Container - Matching Create Account Design */}
-        <div className="max-w-4xl w-full mx-auto animate-fadeIn">
-          <div className="flex flex-col lg:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-white">
-            {/* Left Side - Illustration/Info */}
-            <div className="lg:w-2/5 bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500 p-8 flex flex-col justify-center relative">
-              <div className="text-center text-white">
-                <div className="mb-6">
+        {/* Login Container */}
+        <div className="max-w-4xl w-full mx-auto animate-fadeIn relative z-10">
+          <div className="flex flex-col lg:flex-row bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border-4 border-white/20">
+            {/* Left Side - Illustration */}
+            <div className="lg:w-2/5 bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500 p-8 flex flex-col justify-center relative overflow-hidden">
+              {/* Animated background pattern */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0 bg-[linear-gradient(30deg,#ffffff40_12%,transparent_12.5%,transparent_87%,#ffffff40_87.5%,#ffffff40),linear-gradient(150deg,#ffffff40_12%,transparent_12.5%,transparent_87%,#ffffff40_87.5%,#ffffff40),linear-gradient(30deg,#ffffff40_12%,transparent_12.5%,transparent_87%,#ffffff40_87.5%,#ffffff40),linear-gradient(150deg,#ffffff40_12%,transparent_12.5%,transparent_87%,#ffffff40_87.5%,#ffffff40),linear-gradient(60deg,#ffffff77_25%,transparent_25.5%,transparent_75%,#ffffff77_75%,#ffffff77),linear-gradient(60deg,#ffffff77_25%,transparent_25.5%,transparent_75%,#ffffff77_75%,#ffffff77)] bg-[size:80px_140px] [background-position:0_0,0_0,40px_70px,40px_70px,0_0,40px_70px]"></div>
+              </div>
+
+              <div className="text-center text-white relative z-10">
+                <div className="mb-6 animate-bounce-slow">
                   <span className="text-6xl">🔐</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4">Welcome Back!</h3>
@@ -104,37 +128,31 @@ function Login() {
                   managing your services
                 </p>
 
-                {/* Features List */}
                 <div className="space-y-3 text-left">
-                  <div className="flex items-center">
-                    <span className="text-lg mr-3">✅</span>
-                    <span className="text-emerald-100">
-                      Quick Service Access
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-lg mr-3">✅</span>
-                    <span className="text-emerald-100">24/7 Support</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-lg mr-3">✅</span>
-                    <span className="text-emerald-100">Secure & Private</span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-lg mr-3">✅</span>
-                    <span className="text-emerald-100">Real-time Updates</span>
-                  </div>
+                  {[
+                    "Quick Service Access",
+                    "24/7 Support",
+                    "Secure & Private",
+                    "Real-time Updates",
+                  ].map((feature, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center animate-slide-in-left"
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <span className="text-lg mr-3">✅</span>
+                      <span className="text-emerald-100">{feature}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
-              {/* Decorative Corner */}
-              <div className="absolute top-0 right-0 w-20 h-20 bg-white bg-opacity-10 rounded-bl-full"></div>
-              <div className="absolute bottom-0 left-0 w-20 h-20 bg-white bg-opacity-10 rounded-tr-full"></div>
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-white/10 rounded-tr-full"></div>
             </div>
 
             {/* Right Side - Form */}
             <div className="lg:w-3/5 p-8">
-              {/* Form Header */}
               <div className="text-center mb-8">
                 <h2 className="text-4xl font-bold text-gray-800 mb-2">
                   Sign in to Your Account
@@ -145,7 +163,6 @@ function Login() {
               </div>
 
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Email Field */}
                 <div className="space-y-2">
                   <label
                     htmlFor="email"
@@ -182,7 +199,6 @@ function Login() {
                   )}
                 </div>
 
-                {/* Password Field */}
                 <div className="space-y-2">
                   <label
                     htmlFor="password"
@@ -205,7 +221,6 @@ function Login() {
                           : "border-gray-300 focus:ring-emerald-500 focus:border-emerald-500"
                       }`}
                     />
-                    {/* Password strength indicator */}
                     {formData.password && (
                       <div className="absolute right-4 top-4 flex space-x-1">
                         {[1, 2, 3, 4].map((dot) => (
@@ -228,13 +243,11 @@ function Login() {
                     </p>
                   ) : (
                     <p className="text-gray-500 text-sm flex items-center">
-                      <span className="mr-2">ℹ️</span>
-                      Minimum of 8 characters
+                      <span className="mr-2">ℹ️</span>Minimum of 8 characters
                     </p>
                   )}
                 </div>
 
-                {/* Remember Me & Forgot Password */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center bg-emerald-50 p-3 rounded-lg">
                     <input
@@ -257,12 +270,10 @@ function Login() {
                     to="/forgot-password"
                     className="text-sm text-emerald-600 hover:text-emerald-500 font-medium transition-colors duration-300 flex items-center"
                   >
-                    <span className="mr-2">🔓</span>
-                    Forgot password?
+                    <span className="mr-2">🔓</span>Forgot password?
                   </Link>
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isLoading}
@@ -279,14 +290,12 @@ function Login() {
                     </div>
                   ) : (
                     <div className="flex items-center justify-center">
-                      <span className="mr-3 text-xl">🚀</span>
-                      Log in
+                      <span className="mr-3 text-xl">🚀</span>Log in
                     </div>
                   )}
                 </button>
               </form>
 
-              {/* Divider */}
               <div className="mt-6 relative">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-300" />
@@ -296,13 +305,10 @@ function Login() {
                 </div>
               </div>
 
-              {/* Google Sign In */}
               <button className="w-full mt-6 flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
-                <span className="mr-3 text-xl">🔍</span>
-                Sign in with Google
+                <span className="mr-3 text-xl">🔍</span>Sign in with Google
               </button>
 
-              {/* Sign Up Link */}
               <div className="mt-8 text-center border-t border-gray-200 pt-6">
                 <p className="text-sm text-gray-600">
                   Don't have an account?{" "}
@@ -317,7 +323,6 @@ function Login() {
             </div>
           </div>
 
-          {/* Additional Info */}
           <div className="text-center mt-6">
             <p className="text-xs text-gray-500">
               By signing in, you agree to our{" "}
@@ -337,8 +342,7 @@ function Login() {
             </p>
           </div>
 
-          {/* Emergency Contact */}
-          <div className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-4 text-white text-center transform hover:scale-102 transition-all duration-300 max-w-md mx-auto">
+          <div className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-4 text-white text-center transform hover:scale-102 transition-all duration-300 max-w-md mx-auto backdrop-blur-sm bg-white/10">
             <div className="flex items-center justify-center space-x-2 mb-2">
               <span className="text-2xl">🚨</span>
               <span className="font-semibold">Emergency Contact</span>
@@ -377,26 +381,100 @@ function Login() {
           }
         }
 
-        @keyframes float {
+        @keyframes float-slow {
           0%,
           100% {
+            transform: translateY(0px) translateX(0px) rotate(0deg);
+          }
+          33% {
+            transform: translateY(-20px) translateX(10px) rotate(120deg);
+          }
+          66% {
+            transform: translateY(10px) translateX(-10px) rotate(240deg);
+          }
+        }
+
+        @keyframes float-medium {
+          0%,
+          100% {
+            transform: translateY(0px) translateX(0px);
+          }
+          50% {
+            transform: translateY(-15px) translateX(5px);
+          }
+        }
+
+        @keyframes wave {
+          0% {
             transform: translateY(0px);
+            opacity: 0.4;
+          }
+          50% {
+            transform: translateY(-10px);
+            opacity: 0.6;
+          }
+          100% {
+            transform: translateY(0px);
+            opacity: 0.4;
+          }
+        }
+
+        @keyframes bounce-slow {
+          0%,
+          100% {
+            transform: translateY(0);
           }
           50% {
             transform: translateY(-10px);
           }
         }
 
+        @keyframes slide-in-left {
+          from {
+            transform: translateX(-20px);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+
+        @keyframes pulse {
+          0%,
+          100% {
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.6;
+            transform: scale(1.2);
+          }
+        }
+
         .animate-shake {
           animation: shake 0.5s ease-in-out;
         }
-
         .animate-fadeIn {
           animation: fadeIn 0.8s ease-out;
         }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
+        .animate-float-slow {
+          animation: float-slow 6s ease-in-out infinite;
+        }
+        .animate-float-medium {
+          animation: float-medium 4s ease-in-out infinite;
+        }
+        .animate-wave {
+          animation: wave 3s ease-in-out infinite;
+        }
+        .animate-bounce-slow {
+          animation: bounce-slow 2s ease-in-out infinite;
+        }
+        .animate-slide-in-left {
+          animation: slide-in-left 0.5s ease-out forwards;
+        }
+        .animate-pulse {
+          animation: pulse 2s ease-in-out infinite;
         }
 
         .hover\\:scale-102:hover {
