@@ -23,7 +23,7 @@ function Header() {
       icon: "⚙️",
     },
     { path: "/Social_Services", label: "Social Services", icon: "👥" },
-    { path: "#", label: "Log Out", icon: "🚪" },
+    { path: "/Login", label: "Login", icon: "🚪" },
   ];
 
   const websiteName = "Colombo Municipal Council";

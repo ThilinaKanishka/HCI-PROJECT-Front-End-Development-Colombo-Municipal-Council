@@ -6,6 +6,8 @@ import Footer from "./components/Footer";
 import Home from "./components/Home";
 import Engineering_Services from "./components/Engineering_Services";
 import Social_Services from "./components/Social_Services";
+import Create_your_Account from "./components/Create_your_Account";
+import Login from "./components/Login";
 
 function App() {
   return (
@@ -22,6 +24,11 @@ function App() {
               element={<Engineering_Services />}
             />
             <Route path="/Social_Services" element={<Social_Services />} />
+            <Route
+              path="/Create_your_Account"
+              element={<Create_your_Account />}
+            />
+            <Route path="/Login" element={<Login />} />
           </Routes>
         </main>
       </div>
