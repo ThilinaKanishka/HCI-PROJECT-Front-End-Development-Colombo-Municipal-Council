@@ -64,6 +64,14 @@ function Login() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+        {/* Side Decoration Elements */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute left-10 top-1/4 w-32 h-32 bg-emerald-200 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute right-20 top-1/3 w-24 h-24 bg-green-200 rounded-full opacity-20 animate-float delay-1000"></div>
+          <div className="absolute left-1/4 bottom-1/4 w-28 h-28 bg-teal-200 rounded-full opacity-20 animate-float delay-500"></div>
+          <div className="absolute right-32 bottom-1/3 w-20 h-20 bg-emerald-200 rounded-full opacity-20 animate-float delay-1500"></div>
+        </div>
+
         {/* Logo Section */}
         <div className="text-center mb-8 animate-fadeIn">
           <Link to="/" className="inline-block group">
@@ -75,27 +83,67 @@ function Login() {
             <h1 className="text-2xl font-bold text-gray-800">
               Colombo Municipal Council
             </h1>
+            <p className="text-emerald-600 text-sm font-mono mt-1">
+              import React from "react"
+            </p>
           </Link>
         </div>
 
-        {/* Login Card */}
-        <div className="max-w-md w-full mx-auto animate-fadeIn">
-          <div className="bg-white rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden">
-            {/* Card Header */}
-            <div className="bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 py-8 px-8 text-center">
-              <div className="flex items-center justify-center space-x-3 mb-2">
-                <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                  <span className="text-3xl text-white">🔐</span>
+        {/* Wide Login Container - Matching Create Account Design */}
+        <div className="max-w-4xl w-full mx-auto animate-fadeIn">
+          <div className="flex flex-col lg:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-white">
+            {/* Left Side - Illustration/Info */}
+            <div className="lg:w-2/5 bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500 p-8 flex flex-col justify-center relative">
+              <div className="text-center text-white">
+                <div className="mb-6">
+                  <span className="text-6xl">🔐</span>
                 </div>
-                <h2 className="text-4xl font-bold text-white">Sign in</h2>
+                <h3 className="text-xl font-bold mb-4">Welcome Back!</h3>
+                <p className="text-emerald-100 mb-6">
+                  Access your Colombo Municipal Council account and continue
+                  managing your services
+                </p>
+
+                {/* Features List */}
+                <div className="space-y-3 text-left">
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">
+                      Quick Service Access
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">24/7 Support</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">Secure & Private</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">Real-time Updates</span>
+                  </div>
+                </div>
               </div>
-              <p className="text-emerald-100 text-lg">
-                Welcome back to Colombo Municipal Council
-              </p>
+
+              {/* Decorative Corner */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white bg-opacity-10 rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-white bg-opacity-10 rounded-tr-full"></div>
             </div>
 
-            {/* Card Body */}
-            <div className="py-8 px-8">
+            {/* Right Side - Form */}
+            <div className="lg:w-3/5 p-8">
+              {/* Form Header */}
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-800 mb-2">
+                  Sign in to Your Account
+                </h2>
+                <p className="text-gray-600">
+                  Welcome back to Colombo Municipal Council Services
+                </p>
+              </div>
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Email Field */}
                 <div className="space-y-2">
@@ -188,7 +236,7 @@ function Login() {
 
                 {/* Remember Me & Forgot Password */}
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center">
+                  <div className="flex items-center bg-emerald-50 p-3 rounded-lg">
                     <input
                       id="remember-me"
                       name="remember-me"
@@ -207,8 +255,9 @@ function Login() {
 
                   <Link
                     to="/forgot-password"
-                    className="text-sm text-emerald-600 hover:text-emerald-500 font-medium transition-colors duration-300"
+                    className="text-sm text-emerald-600 hover:text-emerald-500 font-medium transition-colors duration-300 flex items-center"
                   >
+                    <span className="mr-2">🔓</span>
                     Forgot password?
                   </Link>
                 </div>
@@ -236,6 +285,22 @@ function Login() {
                   )}
                 </button>
               </form>
+
+              {/* Divider */}
+              <div className="mt-6 relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-gray-300" />
+                </div>
+                <div className="relative flex justify-center text-sm">
+                  <span className="px-2 bg-white text-gray-500">Or</span>
+                </div>
+              </div>
+
+              {/* Google Sign In */}
+              <button className="w-full mt-6 flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 transition-all duration-300 transform hover:scale-105">
+                <span className="mr-3 text-xl">🔍</span>
+                Sign in with Google
+              </button>
 
               {/* Sign Up Link */}
               <div className="mt-8 text-center border-t border-gray-200 pt-6">
@@ -273,7 +338,7 @@ function Login() {
           </div>
 
           {/* Emergency Contact */}
-          <div className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-4 text-white text-center transform hover:scale-102 transition-all duration-300">
+          <div className="mt-8 bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-4 text-white text-center transform hover:scale-102 transition-all duration-300 max-w-md mx-auto">
             <div className="flex items-center justify-center space-x-2 mb-2">
               <span className="text-2xl">🚨</span>
               <span className="font-semibold">Emergency Contact</span>
@@ -312,12 +377,26 @@ function Login() {
           }
         }
 
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
         .animate-shake {
           animation: shake 0.5s ease-in-out;
         }
 
         .animate-fadeIn {
           animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
         }
 
         .hover\\:scale-102:hover {
