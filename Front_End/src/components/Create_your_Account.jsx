@@ -108,6 +108,14 @@ function Create_your_Account() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+        {/* Side Decoration Elements */}
+        <div className="fixed inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute left-10 top-1/4 w-32 h-32 bg-emerald-200 rounded-full opacity-20 animate-float"></div>
+          <div className="absolute right-20 top-1/3 w-24 h-24 bg-green-200 rounded-full opacity-20 animate-float delay-1000"></div>
+          <div className="absolute left-1/4 bottom-1/4 w-28 h-28 bg-teal-200 rounded-full opacity-20 animate-float delay-500"></div>
+          <div className="absolute right-32 bottom-1/3 w-20 h-20 bg-emerald-200 rounded-full opacity-20 animate-float delay-1500"></div>
+        </div>
+
         {/* Logo Section */}
         <div className="text-center mb-8 animate-fadeIn">
           <Link to="/" className="inline-block group">
@@ -125,99 +133,136 @@ function Create_your_Account() {
           </Link>
         </div>
 
-        {/* Registration Card */}
-        <div className="max-w-md w-full mx-auto animate-fadeIn">
-          <div className="bg-white rounded-3xl shadow-2xl transform hover:scale-105 transition-all duration-500 overflow-hidden">
-            {/* Card Header */}
-            <div className="bg-gradient-to-r from-emerald-600 via-green-500 to-teal-500 py-8 px-8 text-center">
-              <div className="flex items-center justify-center space-x-3 mb-2">
-                <div className="bg-white bg-opacity-20 p-3 rounded-full">
-                  <span className="text-3xl text-white">👤</span>
+        {/* Wide Registration Container */}
+        <div className="max-w-4xl w-full mx-auto animate-fadeIn">
+          <div className="flex flex-col lg:flex-row bg-white rounded-3xl shadow-2xl overflow-hidden border-4 border-white">
+            {/* Left Side - Illustration/Info */}
+            <div className="lg:w-2/5 bg-gradient-to-br from-emerald-600 via-green-500 to-teal-500 p-8 flex flex-col justify-center relative">
+              <div className="text-center text-white">
+                <div className="mb-6">
+                  <span className="text-6xl">🏛️</span>
                 </div>
-                <h2 className="text-4xl font-bold text-white">
-                  Create your Account
-                </h2>
+                <h3 className="text-xl font-bold mb-4">Join Our Community</h3>
+                <p className="text-emerald-100 mb-6">
+                  Access exclusive services and stay connected with Colombo
+                  Municipal Council
+                </p>
+
+                {/* Features List */}
+                <div className="space-y-3 text-left">
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">
+                      Quick Service Access
+                    </span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">24/7 Support</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">Secure & Private</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="text-lg mr-3">✅</span>
+                    <span className="text-emerald-100">Real-time Updates</span>
+                  </div>
+                </div>
               </div>
-              <p className="text-emerald-100 text-lg">
-                Join Colombo Municipal Council Services
-              </p>
+
+              {/* Decorative Corner */}
+              <div className="absolute top-0 right-0 w-20 h-20 bg-white bg-opacity-10 rounded-bl-full"></div>
+              <div className="absolute bottom-0 left-0 w-20 h-20 bg-white bg-opacity-10 rounded-tr-full"></div>
             </div>
 
-            {/* Card Body */}
-            <div className="py-8 px-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name Field */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="name"
-                    className="flex items-center text-sm font-medium text-gray-700"
-                  >
-                    <span className="mr-2 text-lg">👤</span>
-                    Name
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your Name"
-                      className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-lg ${
-                        errors.name
-                          ? "border-red-300 focus:ring-red-500"
-                          : "border-gray-300 focus:ring-emerald-500 focus:border-emerald-500"
-                      }`}
-                    />
-                    {!errors.name && formData.name && (
-                      <div className="absolute right-4 top-4 text-green-500 text-xl animate-pulse">
-                        ✓
-                      </div>
-                    )}
-                  </div>
-                  {errors.name && (
-                    <p className="text-red-500 text-sm flex items-center animate-shake">
-                      <span className="mr-2 text-lg">⚠️</span>
-                      {errors.name}
-                    </p>
-                  )}
-                </div>
+            {/* Right Side - Form */}
+            <div className="lg:w-3/5 p-8">
+              {/* Form Header */}
+              <div className="text-center mb-8">
+                <h2 className="text-4xl font-bold text-gray-800 mb-2">
+                  Create your Account
+                </h2>
+                <p className="text-gray-600">
+                  Join Colombo Municipal Council Services
+                </p>
+              </div>
 
-                {/* Mobile Number Field */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="mobile"
-                    className="flex items-center text-sm font-medium text-gray-700"
-                  >
-                    <span className="mr-2 text-lg">📱</span>
-                    Mobile Number
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="mobile"
-                      name="mobile"
-                      type="tel"
-                      value={formData.mobile}
-                      onChange={handleChange}
-                      placeholder="07XXXXXXXXX"
-                      className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-lg ${
-                        errors.mobile
-                          ? "border-red-300 focus:ring-red-500"
-                          : "border-gray-300 focus:ring-emerald-500 focus:border-emerald-500"
-                      }`}
-                    />
-                    {!errors.mobile && formData.mobile && (
-                      <div className="absolute right-4 top-4 text-green-500 text-xl animate-pulse">
-                        ✓
-                      </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Field */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="name"
+                      className="flex items-center text-sm font-medium text-gray-700"
+                    >
+                      <span className="mr-2 text-lg">👤</span>
+                      Name
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="name"
+                        name="name"
+                        type="text"
+                        value={formData.name}
+                        onChange={handleChange}
+                        placeholder="Your Name"
+                        className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-lg ${
+                          errors.name
+                            ? "border-red-300 focus:ring-red-500"
+                            : "border-gray-300 focus:ring-emerald-500 focus:border-emerald-500"
+                        }`}
+                      />
+                      {!errors.name && formData.name && (
+                        <div className="absolute right-4 top-4 text-green-500 text-xl animate-pulse">
+                          ✓
+                        </div>
+                      )}
+                    </div>
+                    {errors.name && (
+                      <p className="text-red-500 text-sm flex items-center animate-shake">
+                        <span className="mr-2 text-lg">⚠️</span>
+                        {errors.name}
+                      </p>
                     )}
                   </div>
-                  {errors.mobile && (
-                    <p className="text-red-500 text-sm flex items-center animate-shake">
-                      <span className="mr-2 text-lg">⚠️</span>
-                      {errors.mobile}
-                    </p>
-                  )}
+
+                  {/* Mobile Number Field */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="mobile"
+                      className="flex items-center text-sm font-medium text-gray-700"
+                    >
+                      <span className="mr-2 text-lg">📱</span>
+                      Mobile Number
+                    </label>
+                    <div className="relative">
+                      <input
+                        id="mobile"
+                        name="mobile"
+                        type="tel"
+                        value={formData.mobile}
+                        onChange={handleChange}
+                        placeholder="07XXXXXXXXX"
+                        className={`w-full px-4 py-4 border rounded-lg focus:outline-none focus:ring-2 transition-all duration-300 text-lg ${
+                          errors.mobile
+                            ? "border-red-300 focus:ring-red-500"
+                            : "border-gray-300 focus:ring-emerald-500 focus:border-emerald-500"
+                        }`}
+                      />
+                      {!errors.mobile && formData.mobile && (
+                        <div className="absolute right-4 top-4 text-green-500 text-xl animate-pulse">
+                          ✓
+                        </div>
+                      )}
+                    </div>
+                    {errors.mobile && (
+                      <p className="text-red-500 text-sm flex items-center animate-shake">
+                        <span className="mr-2 text-lg">⚠️</span>
+                        {errors.mobile}
+                      </p>
+                    )}
+                  </div>
                 </div>
 
                 {/* Email Field */}
@@ -321,7 +366,7 @@ function Create_your_Account() {
                 </div>
 
                 {/* Newsletter Checkbox */}
-                <div className="flex items-center">
+                <div className="flex items-center bg-emerald-50 p-4 rounded-lg">
                   <input
                     id="receive-news"
                     name="receive-news"
@@ -442,12 +487,26 @@ function Create_your_Account() {
           }
         }
 
+        @keyframes float {
+          0%,
+          100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+
         .animate-shake {
           animation: shake 0.5s ease-in-out;
         }
 
         .animate-fadeIn {
           animation: fadeIn 0.8s ease-out;
+        }
+
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
         }
       `}</style>
     </>
