@@ -170,9 +170,6 @@ function Create_your_Account() {
             <h1 className="text-2xl font-bold text-gray-800">
               Colombo Municipal Council
             </h1>
-            <p className="text-emerald-600 text-sm font-mono mt-1">
-              import React from "react"
-            </p>
           </Link>
         </div>
 
